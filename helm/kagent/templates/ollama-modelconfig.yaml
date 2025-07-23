@@ -1,0 +1,17 @@
+apiVersion: kagent.dev/v1alpha1
+kind: ModelConfig
+metadata:
+  name: ollama-qwen2-5-coder-1-5b
+  namespace: {{ .Release.Namespace }}
+spec:
+  provider: Ollama
+  model: "ollama-qwen2-5-coder-1-5b"
+  ollama:
+    host: "host.docker.internal:11434"
+  modelInfo:
+    vision: false
+    functionCalling: true
+    jsonOutput: true
+    family: "llama"
+    structuredOutput: true
+    multipleSystemMessages: false

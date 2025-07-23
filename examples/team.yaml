@@ -1,0 +1,19 @@
+apiVersion: kagent.dev/v1alpha1
+kind: Team
+metadata:
+  name: developers
+  namespace: kagent
+spec:
+  description: "Developers Team"
+  participants:
+    - test
+  modelConfig: ollama-qwen2-5-coder-1-5b
+
+  # how messages get routed among your agents
+  roundRobinTeamConfig: {}
+
+  # when to stop the team run
+  maxTurns: 10
+  terminationCondition:
+    maxMessageTermination:
+      maxMessages: 10

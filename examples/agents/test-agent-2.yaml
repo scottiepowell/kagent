@@ -1,0 +1,28 @@
+apiVersion: kagent.dev/v1alpha1
+kind: Agent
+metadata:
+  name: test-2
+  namespace: kagent
+spec:
+  description: Test agent using Ollama and datetime tool
+  modelConfig: ollama-qwen2-5-coder-1-5b
+  tools:
+    - type: McpServer
+      mcpServer:
+        toolServer: kagent-tool-server
+        toolNames:
+          - datetime_get_current_time
+  a2aConfig:
+    skills:
+      - id: get-datetime
+        name: Get Date/Time
+        description: "Return the current date and time in ISO-8601 format"
+        inputModes:
+          - text
+        outputModes:
+          - text
+        tags:
+          - datetime
+          - utility
+        examples:
+          - "What's the current time?"

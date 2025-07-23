@@ -1,0 +1,20 @@
+apiVersion: kagent.dev/v1alpha1
+kind: Agent
+metadata:
+  name: test
+  namespace: kagent
+spec:
+  # Reference the existing ModelConfig CR for Ollama
+  modelConfig: ollama-qwen2-5-coder-1-5b
+
+  # Configure tools via the kagent-tool-server MCP server
+  tools:
+    - type: McpServer
+      mcpServer:
+        toolServer: kagent-tool-server
+        toolNames:
+          - datetime_get_current_time
+
+  # Optional descriptive fields
+  description: "Test agent using Ollama and datetime tool"
+  # memory, plugins, or other settings can go here if needed
